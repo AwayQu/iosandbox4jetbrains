@@ -3,7 +3,7 @@
  */
 package bean;
 
-public class DevicePlistBean {
+public class DevicePlist {
 
     private String UDID;
     private String deviceType;
@@ -11,7 +11,7 @@ public class DevicePlistBean {
     private String runtime;
     private int state;
 
-    public DevicePlistBean() {
+    public DevicePlist() {
     }
 
     public int getState() {

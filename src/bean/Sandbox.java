@@ -1,3 +1,5 @@
+package bean;
+
 import java.util.ArrayList;
 
 /**

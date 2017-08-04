@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package plistparser;
+package dependency.plistparser;
 
 import java.util.Date;
 
