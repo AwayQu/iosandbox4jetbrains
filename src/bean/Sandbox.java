@@ -17,7 +17,7 @@ public class Sandbox {
     public String version;
     public String device;
     public String boxName;
-    public ArrayList<MenuItem> items;
+    public ArrayList<String> items;
     public ArrayList<String> projectSandBoxPath;
 
     public String getVersion() {
@@ -52,11 +52,11 @@ public class Sandbox {
         this.boxName = boxName;
     }
 
-    public ArrayList<MenuItem> getItems() {
+    public ArrayList<String> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<MenuItem> items) {
+    public void setItems(ArrayList<String> items) {
         this.items = items;
     }
 

@@ -1,3 +1,4 @@
+import bean.Sandbox;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -6,6 +7,8 @@ import dependency.plistparser.PListArray;
 import dependency.plistparser.PListDict;
 import dependency.plistparser.PListException;
 import dependency.plistparser.PListParser;
+
+import java.util.ArrayList;
 
 /**
  * Created by away on 05/08/2017.
@@ -65,5 +68,13 @@ public class XMLParserTest {
         String[] strings = testString.split("\\.");
         String latString = strings[strings.length - 1];
         assertEquals("bb", latString);
+    }
+
+
+    @Test
+    public void testGetSandboxes() {
+
+        ArrayList<Sandbox> sandboxex = ItemsData.getSandboxList();
+        assertEquals("bb", "bb");
     }
 }

@@ -1,7 +1,11 @@
 import bean.BeanFactory;
 import bean.DevicePlist;
 import bean.Sandbox;
+import com.intellij.ui.mac.foundation.Foundation;
+import com.intellij.ui.mac.foundation.ID;
+import dependency.plistparser.PListDict;
 import dependency.plistparser.PListException;
+import dependency.plistparser.PListParser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,6 +54,10 @@ public class ItemsData {
         return plists;
     }
 
+    /**
+     * getAllItems
+     * @return
+     */
     static ArrayList<Sandbox> getSandboxList() {
         ArrayList<DevicePlist> devicePlists = ItemsData.getDeviceInfoPlists();
 
@@ -63,21 +71,65 @@ public class ItemsData {
             sandbox.setVersion(dp.getVersion());
             sandbox.setDevice(dp.getDevice());
 
-            // todo: get projects sandboxes
+            sandbox.items = ItemsData.getProjects(sandbox);
 
             sandboxes.add(sandbox);
 
         }
 
-        return null;
+        return sandboxes;
     }
 
-    static ArrayList getProjects(Sandbox sandbox) {
+    static ArrayList<String> getProjects(Sandbox sandbox) {
         ArrayList arrayList = new ArrayList<>();
 
+        String applicationPath = ItemsData.getDevicePath(sandbox.getUDID());
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> projectSandboxPaths = new ArrayList<>();
+
+        File applicationPathDir = new File(applicationPath);
 
 
-        return null;
+        File[] files = applicationPathDir.listFiles();
+        if (null == files) {
+            return null;
+        }
+
+        for (File f: files) {
+            String fileName = f.getAbsolutePath();
+            String fileUrl = ItemsData.getDataDictPath(fileName);
+
+            File fileUrlFile = new File(fileUrl);
+            if (!fileUrlFile.exists()) {
+                File fileNameFile = new File(fileName);
+                File[] fileNameFiles = fileNameFile.listFiles();
+                if (null == fileNameFiles) {
+                    continue;
+                }
+                for (File f1 : fileNameFiles) {
+                    if (f1.getName().contains(".app")){
+                        names.add(f1.getName().replace(".app", "").replace("-", "_"));
+                        projectSandboxPaths.add(fileName);
+                    }
+                }
+            } else {
+                try {
+                    ID myDelegate = Foundation.invoke(Foundation.invoke("NSAutoreleasePool", "alloc", new Object[0]), "init", new Object[0]);
+                    Foundation.NSDictionary dictionary = new Foundation.NSDictionary(Foundation.invoke("NSDictionary", "dictionaryWithContentsOfFile:", new Object[]{fileUrl}));
+
+                    PListDict dict = PListParser.parse(fileUrl);
+
+                    names.add(dict.getString("MCMMetadataIdentifier"));
+                    projectSandboxPaths.add(fileName);
+                } catch (PListException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        sandbox.projectSandBoxPath = projectSandboxPaths;
+
+        return names;
     }
 
 
@@ -125,6 +177,10 @@ public class ItemsData {
     }
 
 
+    static String getDataDictPath(String filePath) {
+        return filePath + "/.com.apple.mobile_container_manager.metadata.plist";
+    }
+
     /**
      * applicationsDataPath
      * @param path
@@ -135,10 +191,18 @@ public class ItemsData {
 
     }
 
+    static String getAppName(String identifierName) {
+        String [] arr = identifierName.split("\\.");
+        String projectName = arr[arr.length - 1];
+        projectName = projectName.replace("-", "_");
+        return projectName;
+    }
+
     static File getSimulatorHomeFile() {
         File file = new File(ItemsData.getUserHome() + "/Library/Developer/CoreSimulator/Devices/");
         return file;
     }
+
 
     static String getUserHome() {
         return "/Users/away";
