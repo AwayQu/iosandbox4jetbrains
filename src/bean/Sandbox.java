@@ -13,11 +13,62 @@ public class Sandbox {
         public Sandbox sandbox;
     }
 
-    public String udid;
+    public String UDID;
+    public String version;
     public String device;
     public String boxName;
     public ArrayList<MenuItem> items;
-    public String projectSandBoxPath;
+    public ArrayList<String> projectSandBoxPath;
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getUDID() {
+        return UDID;
+    }
+
+    public void setUDID(String UDID) {
+        this.UDID = UDID;
+    }
+
+    public String getDevice() {
+        return device;
+    }
+
+    public void setDevice(String device) {
+        this.device = device;
+    }
+
+    public String getBoxName() {
+        return boxName;
+    }
+
+    public void setBoxName(String boxName) {
+        this.boxName = boxName;
+    }
+
+    public ArrayList<MenuItem> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<MenuItem> items) {
+        this.items = items;
+    }
+
+    public ArrayList<String> getProjectSandBoxPath() {
+        return projectSandBoxPath;
+    }
+
+    public void setProjectSandBoxPath(ArrayList<String> projectSandBoxPath) {
+        this.projectSandBoxPath = projectSandBoxPath;
+    }
+
+
 
 }
 

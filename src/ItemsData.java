@@ -1,10 +1,6 @@
 import bean.BeanFactory;
 import bean.DevicePlist;
 import bean.Sandbox;
-import com.apple.eio.FileManager;
-import com.intellij.psi.codeStyle.arrangement.ArrangementEntryDependencyInfo;
-import com.intellij.ui.mac.foundation.Foundation;
-import com.sun.jna.platform.mac.MacFileUtils;
 import dependency.plistparser.PListException;
 
 import java.io.File;
@@ -20,6 +16,8 @@ public class ItemsData {
     public ItemsData() {
 
     }
+
+
 
     static ArrayList<DevicePlist> getDeviceInfoPlists() {
         File file = ItemsData.getSimulatorHomeFile();
@@ -52,6 +50,28 @@ public class ItemsData {
         return plists;
     }
 
+    static ArrayList<Sandbox> getSandboxList() {
+        ArrayList<DevicePlist> devicePlists = ItemsData.getDeviceInfoPlists();
+
+        ArrayList<Sandbox> sandboxes = new ArrayList<>();
+        for (DevicePlist dp : devicePlists) {
+            Sandbox sandbox = new Sandbox();
+
+            sandbox.setUDID(dp.getUDID());
+
+            sandbox.setBoxName(dp.getBoxName());
+            sandbox.setVersion(dp.getVersion());
+            sandbox.setDevice(dp.getDevice());
+
+            // todo: get projects sandboxes
+
+            sandboxes.add(sandbox);
+
+        }
+
+        return null;
+    }
+
     static ArrayList getProjects(Sandbox sandbox) {
         ArrayList arrayList = new ArrayList<>();
 
@@ -63,7 +83,7 @@ public class ItemsData {
 
     /**
      * applicationData path
-     * @param sandbox
+     * @param UDID
      * @return
      */
     static String getDevicePath(String UDID) {

@@ -57,4 +57,13 @@ public class XMLParserTest {
         String applicationPath = ItemsData.getDevicePath("41D3F8C6-8237-4276-9190-F723831F325D");
         assertEquals("",applicationPath);
     }
+
+
+    @Test
+    public void testSplit() {
+        String testString = "aa.bb";
+        String[] strings = testString.split("\\.");
+        String latString = strings[strings.length - 1];
+        assertEquals("bb", latString);
+    }
 }

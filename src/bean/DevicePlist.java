@@ -53,4 +53,19 @@ public class DevicePlist {
     public void setRuntime(String runtime) {
         this.runtime = runtime;
     }
+
+    public String getVersion() {
+        String runtime = this.getRuntime();
+        String[] strings = runtime.split("\\.");
+        return strings[strings.length - 1];
+
+    }
+
+    public String getDevice() {
+        return this.getName();
+    }
+
+    public String getBoxName() {
+        return this.getDevice() + "> (" + this.getVersion() + ")";
+    }
 }
