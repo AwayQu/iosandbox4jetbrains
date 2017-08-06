@@ -15,6 +15,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+/**
+ * TODOList:
+ *   1.current application quick open
+ *   2.add observer of file change
+ */
+
 public class SandboxActionGroup extends ActionGroup {
     public class ProjectSandboxAction extends AnAction {
         private String projectItem;
