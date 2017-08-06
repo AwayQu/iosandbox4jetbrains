@@ -1,11 +1,11 @@
 <idea-plugin>
-    <id>com.your.company.unique.plugin.id</id>
-    <name>Plugin display name here</name>
+    <id>com.away1994.plugin.gotosandbox1</id>
+    <name>AppCode iOS Go To Sandbox 1</name>
     <version>1.0</version>
     <vendor email="awayquym@gmail.com" url="https://github.com/AwayQuEM/iosandbox4jetbrains">repository</vendor>
 
     <description><![CDATA[
-      Enter short description for your plugin here.<br>
+      Enter short description for your com.away1994.plugin here.<br>
       <em>most HTML tags may be used</em>
     ]]></description>
 
@@ -20,7 +20,7 @@
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
-    <!-- uncomment to enable plugin in all products
+    <!-- uncomment to enacom.away1994.pluginugin in all products
     <depends>com.intellij.modules.lang</depends>
     -->
 
@@ -29,10 +29,10 @@
     </extensions>
 
     <actions>
-        <group id="SandboxActionGroup" class="plugin.SandboxActionGroup" text="GoToSandbox" description="GoToSandbox"
+        <group id="SandboxActionGroup" class="com.away1994.plugin.SandboxActionGroup" text="GoToSandbox" description="GoToSandbox"
                popup="true">
             <add-to-group group-id="ViewMenu" anchor="first"/>
-            <!--<action id="Myplugin.Textboxes" class="plugin.TextBoxes" text="Text _Boxes" description="A test menu item" />-->
+            <!--<action id="Myplugin.Textboxes" clacom.away1994.pluginugin.TextBoxes" text="Text _Boxes" description="A test menu item" />-->
             <!--<separator/>-->
         </group>
     </actions>

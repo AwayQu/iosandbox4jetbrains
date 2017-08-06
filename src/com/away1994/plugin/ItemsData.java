@@ -1,4 +1,4 @@
-package plugin;
+package com.away1994.plugin;
 
 import bean.BeanFactory;
 import bean.DevicePlist;

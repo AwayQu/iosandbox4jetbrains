@@ -1,7 +1,7 @@
 /**
  * Created by away on 06/08/2017.
  */
-package plugin;
+package com.away1994.plugin;
 
 import bean.Sandbox;
 import com.apple.eio.FileManager;
@@ -62,6 +62,12 @@ public class SandboxActionGroup extends ActionGroup {
             this.sandbox = sandbox;
         }
     }
+
+
+    public SandboxActionGroup() {
+        super();
+    }
+
     @NotNull
     @Override
     public AnAction[] getChildren(AnActionEvent anActionEvent) {

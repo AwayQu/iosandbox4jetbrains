@@ -5,7 +5,7 @@ import dependency.plistparser.PListDict;
 import dependency.plistparser.PListException;
 import dependency.plistparser.PListParser;
 import org.junit.Test;
-import plugin.ItemsData;
+import com.away1994.plugin.ItemsData;
 
 import java.io.File;
 import java.io.FileNotFoundException;
