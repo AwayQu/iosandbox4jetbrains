@@ -37,7 +37,9 @@ public class ItemsData {
 
         ArrayList<DevicePlist> plists = new ArrayList<>();
         for (File f : files) {
-
+            if (!f.isDirectory()) {
+                continue;
+            }
             try {
                 String devicePlistPath = f.getAbsolutePath() + "/device.plist";
                 DevicePlist devicePlist = BeanFactory.createDevicePlistBean(devicePlistPath);
@@ -97,6 +99,9 @@ public class ItemsData {
             return null;
         }
 
+        try {
+
+
         for (File f : files) {
             String fileName = f.getAbsolutePath();
             String fileUrl = ItemsData.getDataDictPath(fileName);
@@ -128,6 +133,10 @@ public class ItemsData {
             }
 
         }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         sandbox.projectSandBoxPath = projectSandboxPaths;
 
         return names;
@@ -155,6 +164,9 @@ public class ItemsData {
         String applicationPath = null;
 
         for (File f : files) {
+            if (!f.isDirectory()) {
+                continue;
+            }
             String devicePlistPath = f.getAbsolutePath() + "/device.plist";
             String fPath = f.getAbsolutePath();
             try {
