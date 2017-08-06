@@ -1,4 +1,5 @@
 import bean.Sandbox;
+import com.apple.eio.FileManager;
 import com.intellij.ui.mac.foundation.Foundation;
 import com.intellij.ui.mac.foundation.ID;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import dependency.plistparser.PListException;
 import dependency.plistparser.PListParser;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
@@ -93,6 +95,16 @@ public class XMLParserTest {
 
         String s = Foundation.toStringViaUTF8(dictionary.get("MCMMetadataIdentifier"));
 
+        assertEquals("bb", "bb");
+
+    }
+
+
+    @Test
+    public void testRevealInFinder() throws FileNotFoundException {
+        String filePath = "/Users/away/Library/Developer/CoreSimulator/Devices/41D3F8C6-8237-4276-9190-F723831F325D/data/Containers/Data/Application/050EF952-4CBB-4CEF-9542-A2CD9CA5584E/.com.apple.mobile_container_manager.metadata.plist";
+
+        FileManager.revealInFinder(new File(filePath));
         assertEquals("bb", "bb");
     }
 }
