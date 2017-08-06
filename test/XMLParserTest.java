@@ -1,18 +1,17 @@
 import bean.Sandbox;
 import com.apple.eio.FileManager;
 import com.intellij.ui.mac.foundation.Foundation;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
 import dependency.plistparser.PListDict;
 import dependency.plistparser.PListException;
 import dependency.plistparser.PListParser;
+import org.junit.Test;
 import plugin.ItemsData;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by away on 05/08/2017.
@@ -105,5 +104,11 @@ public class XMLParserTest {
 
         FileManager.revealInFinder(new File(filePath));
         assertEquals("bb", "bb");
+    }
+
+    @Test
+    public void testGetUserHome() {
+        String userHome = System.getProperty("user.home");
+        assertEquals("/Users/away", userHome);
     }
 }

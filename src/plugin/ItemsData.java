@@ -215,9 +215,9 @@ public class ItemsData {
         return file;
     }
 
-
     public static String getUserHome() {
-        return "/Users/away";
+
+        return System.getProperty("user.home");
     }
 
 
