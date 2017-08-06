@@ -1,17 +1,14 @@
+package plugin;
+
 import bean.BeanFactory;
 import bean.DevicePlist;
 import bean.Sandbox;
 import com.intellij.ui.mac.foundation.Foundation;
-import com.intellij.ui.mac.foundation.ID;
-import dependency.plistparser.PListDict;
 import dependency.plistparser.PListException;
-import dependency.plistparser.PListParser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by away on 03/08/2017.
@@ -24,7 +21,7 @@ public class ItemsData {
     }
 
 
-    static ArrayList<DevicePlist> getDeviceInfoPlists() {
+    public static ArrayList<DevicePlist> getDeviceInfoPlists() {
         File file = ItemsData.getSimulatorHomeFile();
         if (!file.exists()) {
             return null;
@@ -62,7 +59,7 @@ public class ItemsData {
      *
      * @return
      */
-    static ArrayList<Sandbox> getSandboxList() {
+    public static ArrayList<Sandbox> getSandboxList() {
         ArrayList<DevicePlist> devicePlists = ItemsData.getDeviceInfoPlists();
 
         ArrayList<Sandbox> sandboxes = new ArrayList<>();
@@ -84,7 +81,7 @@ public class ItemsData {
         return sandboxes;
     }
 
-    static ArrayList<String> getProjects(Sandbox sandbox) {
+    public static ArrayList<String> getProjects(Sandbox sandbox) {
         ArrayList arrayList = new ArrayList<>();
 
         String applicationPath = ItemsData.getDevicePath(sandbox.getUDID());
@@ -149,7 +146,7 @@ public class ItemsData {
      * @param UDID
      * @return
      */
-    static String getDevicePath(String UDID) {
+    public static String getDevicePath(String UDID) {
 
         File file = ItemsData.getSimulatorHomeFile();
         if (!file.exists()) {
@@ -191,7 +188,7 @@ public class ItemsData {
     }
 
 
-    static String getDataDictPath(String filePath) {
+    public static String getDataDictPath(String filePath) {
         return filePath + "/.com.apple.mobile_container_manager.metadata.plist";
     }
 
@@ -201,25 +198,25 @@ public class ItemsData {
      * @param path
      * @return
      */
-    static String getApplicationDataPath(String path) {
+    public static String getApplicationDataPath(String path) {
         return path + "/data/Containers/Data/Application";
 
     }
 
-    static String getAppName(String identifierName) {
+    public static String getAppName(String identifierName) {
         String[] arr = identifierName.split("\\.");
         String projectName = arr[arr.length - 1];
         projectName = projectName.replace("-", "_");
         return projectName;
     }
 
-    static File getSimulatorHomeFile() {
+    public static File getSimulatorHomeFile() {
         File file = new File(ItemsData.getUserHome() + "/Library/Developer/CoreSimulator/Devices/");
         return file;
     }
 
 
-    static String getUserHome() {
+    public static String getUserHome() {
         return "/Users/away";
     }
 

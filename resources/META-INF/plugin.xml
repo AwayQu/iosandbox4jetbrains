@@ -31,7 +31,7 @@
   <actions>
     <group id="MyPlugin.SampleMenu" text="_Sample Menu" description="Sample menu">
       <add-to-group group-id="MainMenu" anchor="last"  />
-      <action id="Myplugin.Textboxes" class="TextBoxes" text="Text _Boxes" description="A test menu item" />
+      <action id="Myplugin.Textboxes" class="plugin.TextBoxes" text="Text _Boxes" description="A test menu item" />
     </group>
   </actions>
 

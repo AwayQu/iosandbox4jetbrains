@@ -1,15 +1,14 @@
 import bean.Sandbox;
 import com.apple.eio.FileManager;
 import com.intellij.ui.mac.foundation.Foundation;
-import com.intellij.ui.mac.foundation.ID;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-import dependency.plistparser.PListArray;
 import dependency.plistparser.PListDict;
 import dependency.plistparser.PListException;
 import dependency.plistparser.PListParser;
+import plugin.ItemsData;
 
 import java.io.File;
 import java.io.FileNotFoundException;
