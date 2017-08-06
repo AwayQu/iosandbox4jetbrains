@@ -123,7 +123,7 @@ public class ItemsData {
 
                 String identifier = Foundation.toStringViaUTF8(dict.get("MCMMetadataIdentifier"));
 
-                names.add(identifier);
+                names.add(ItemsData.getAppName(identifier));
                 projectSandboxPaths.add(fileName);
             }
 
