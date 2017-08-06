@@ -1,4 +1,4 @@
-import bean.Sandbox;
+import com.away199.bean.Sandbox;
 import com.apple.eio.FileManager;
 import com.intellij.ui.mac.foundation.Foundation;
 import dependency.plistparser.PListDict;

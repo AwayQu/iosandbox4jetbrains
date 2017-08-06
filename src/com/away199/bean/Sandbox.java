@@ -1,4 +1,4 @@
-package bean;
+package com.away199.bean;
 
 import java.util.ArrayList;
 

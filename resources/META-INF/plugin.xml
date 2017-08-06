@@ -2,7 +2,7 @@
     <id>com.away1994.plugin.gotosandbox1</id>
     <name>AppCode iOS Go To Sandbox 1</name>
     <version>1.0</version>
-    <vendor email="awayquym@gmail.com" url="https://github.com/AwayQuEM/iosandbox4jetbrains">repository</vendor>
+    <vendor email="awayquym@gmail.com" url="https://github.com/AwayQuEM/iosandbox4jetbrains">away</vendor>
 
     <description><![CDATA[
       Enter short description for your com.away1994.plugin here.<br>
@@ -16,7 +16,7 @@
     </change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="145.0"/>
+    <!--<idea-version since-build="171"/>-->
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -24,9 +24,9 @@
     <depends>com.intellij.modules.lang</depends>
     -->
 
-    <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
-    </extensions>
+    <!--<extensions defaultExtensionNs="com.intellij">-->
+        <!--&lt;!&ndash; Add your extensions here &ndash;&gt;-->
+    <!--</extensions>-->
 
     <actions>
         <group id="SandboxActionGroup" class="com.away1994.plugin.SandboxActionGroup" text="GoToSandbox" description="GoToSandbox"

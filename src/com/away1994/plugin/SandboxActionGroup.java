@@ -3,8 +3,8 @@
  */
 package com.away1994.plugin;
 
-import bean.Sandbox;
 import com.apple.eio.FileManager;
+import com.away199.bean.Sandbox;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;

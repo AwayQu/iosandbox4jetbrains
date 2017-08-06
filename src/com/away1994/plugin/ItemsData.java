@@ -1,8 +1,8 @@
 package com.away1994.plugin;
 
-import bean.BeanFactory;
-import bean.DevicePlist;
-import bean.Sandbox;
+import com.away199.bean.BeanFactory;
+import com.away199.bean.DevicePlist;
+import com.away199.bean.Sandbox;
 import com.intellij.ui.mac.foundation.Foundation;
 import dependency.plistparser.PListException;
 

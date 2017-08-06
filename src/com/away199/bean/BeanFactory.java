@@ -1,15 +1,15 @@
 /**
  * Created by away on 05/08/2017.
  */
-package bean;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+package com.away199.bean;
 
 import dependency.plistparser.PListDict;
 import dependency.plistparser.PListException;
 import dependency.plistparser.PListParser;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class BeanFactory {
 
