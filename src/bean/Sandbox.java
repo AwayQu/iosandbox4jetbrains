@@ -8,16 +8,18 @@ import java.util.ArrayList;
 
 public class Sandbox {
 
+
+
     public class MenuItem {
         public int index;
         public Sandbox sandbox;
     }
 
-    public String UDID;
-    public String version;
-    public String device;
-    public String boxName;
-    public ArrayList<String> items;
+    private String UDID;
+    private String version;
+    private String device;
+    private String boxName;
+    private ArrayList<String> items;
     public ArrayList<String> projectSandBoxPath;
 
     public String getVersion() {
@@ -67,8 +69,6 @@ public class Sandbox {
     public void setProjectSandBoxPath(ArrayList<String> projectSandBoxPath) {
         this.projectSandBoxPath = projectSandBoxPath;
     }
-
-
 
 }
 

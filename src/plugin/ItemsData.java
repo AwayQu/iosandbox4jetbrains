@@ -16,6 +16,31 @@ import java.util.ArrayList;
 
 public class ItemsData {
 
+    private static String[] systemItems = new String[] {
+            "GameCenterUIService",
+            "news",
+            "mobilecal",
+            "VSViewService",
+            "HealthPrivacyService",
+            "WatchListViewService",
+            "ServerDocuments",
+            "SafariViewService",
+            "mobilesafari",
+            "DDActionsService",
+            "Health",
+            "share",
+            "iCloudDriveApp",
+            "webapp1",
+            "webapp",
+            "Maps",
+            "StoreKitUIService",
+            "AccountAuthenticationDialog",
+            "Passbook",
+            "reminders",
+            "PassbookUIService",
+            "WebContentAnalysisUI"
+    };
+
     public ItemsData() {
 
     }
@@ -72,7 +97,7 @@ public class ItemsData {
             sandbox.setVersion(dp.getVersion());
             sandbox.setDevice(dp.getDevice());
 
-            sandbox.items = ItemsData.getProjects(sandbox);
+            sandbox.setItems(ItemsData.getProjects(sandbox));
 
             sandboxes.add(sandbox);
 
@@ -124,8 +149,9 @@ public class ItemsData {
 //                        new Object[]{Foundation.nsString(fileUrl)}));
 
                 String identifier = Foundation.toStringViaUTF8(dict.get("MCMMetadataIdentifier"));
-
-                names.add(ItemsData.getAppName(identifier));
+                String name = ItemsData.getAppName(identifier);
+                if (ItemsData.isSystemItem(name)) continue;
+                names.add(name);
                 projectSandboxPaths.add(fileName);
             }
 
@@ -218,6 +244,22 @@ public class ItemsData {
     public static String getUserHome() {
 
         return System.getProperty("user.home");
+    }
+
+
+
+    private static boolean isSystemItem(Object o) {
+
+        if (o == null) {
+            for (int i = 0; i < ItemsData.systemItems.length; i++)
+                if (ItemsData.systemItems[i]==null)
+                    return i >= 0;
+        } else {
+            for (int i = 0; i < ItemsData.systemItems.length; i++)
+                if (o.equals(ItemsData.systemItems[i]))
+                    return i >= 0;
+        }
+        return false;
     }
 
 
