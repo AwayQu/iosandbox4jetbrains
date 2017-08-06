@@ -1,4 +1,6 @@
 import bean.Sandbox;
+import com.intellij.ui.mac.foundation.Foundation;
+import com.intellij.ui.mac.foundation.ID;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,6 +10,7 @@ import dependency.plistparser.PListDict;
 import dependency.plistparser.PListException;
 import dependency.plistparser.PListParser;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -58,7 +61,7 @@ public class XMLParserTest {
     @Test
     public void testGetDevicePath() {
         String applicationPath = ItemsData.getDevicePath("41D3F8C6-8237-4276-9190-F723831F325D");
-        assertEquals("",applicationPath);
+        assertEquals("", applicationPath);
     }
 
 
@@ -75,6 +78,21 @@ public class XMLParserTest {
     public void testGetSandboxes() {
 
         ArrayList<Sandbox> sandboxex = ItemsData.getSandboxList();
+        assertEquals("bb", "bb");
+    }
+
+
+    @Test
+    public void testGetContentOfFile() {
+
+        String filePath = "/Users/away/Library/Developer/CoreSimulator/Devices/41D3F8C6-8237-4276-9190-F723831F325D/data/Containers/Data/Application/050EF952-4CBB-4CEF-9542-A2CD9CA5584E/.com.apple.mobile_container_manager.metadata.plist";
+        File file = new File(filePath);
+
+        Foundation.NSDictionary dictionary = new Foundation.NSDictionary(Foundation.safeInvoke("NSDictionary", "dictionaryWithContentsOfFile:",
+                new Object[]{Foundation.nsString(filePath)}));
+
+        String s = Foundation.toStringViaUTF8(dictionary.get("MCMMetadataIdentifier"));
+
         assertEquals("bb", "bb");
     }
 }

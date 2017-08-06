@@ -10,6 +10,8 @@ import dependency.plistparser.PListParser;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by away on 03/08/2017.
@@ -20,7 +22,6 @@ public class ItemsData {
     public ItemsData() {
 
     }
-
 
 
     static ArrayList<DevicePlist> getDeviceInfoPlists() {
@@ -35,7 +36,7 @@ public class ItemsData {
         }
 
         ArrayList<DevicePlist> plists = new ArrayList<>();
-        for (File f: files) {
+        for (File f : files) {
 
             try {
                 String devicePlistPath = f.getAbsolutePath() + "/device.plist";
@@ -56,6 +57,7 @@ public class ItemsData {
 
     /**
      * getAllItems
+     *
      * @return
      */
     static ArrayList<Sandbox> getSandboxList() {
@@ -95,7 +97,7 @@ public class ItemsData {
             return null;
         }
 
-        for (File f: files) {
+        for (File f : files) {
             String fileName = f.getAbsolutePath();
             String fileUrl = ItemsData.getDataDictPath(fileName);
 
@@ -107,23 +109,22 @@ public class ItemsData {
                     continue;
                 }
                 for (File f1 : fileNameFiles) {
-                    if (f1.getName().contains(".app")){
+                    if (f1.getName().contains(".app")) {
                         names.add(f1.getName().replace(".app", "").replace("-", "_"));
                         projectSandboxPaths.add(fileName);
                     }
                 }
             } else {
-                try {
-                    ID myDelegate = Foundation.invoke(Foundation.invoke("NSAutoreleasePool", "alloc", new Object[0]), "init", new Object[0]);
-                    Foundation.NSDictionary dictionary = new Foundation.NSDictionary(Foundation.invoke("NSDictionary", "dictionaryWithContentsOfFile:", new Object[]{fileUrl}));
 
-                    PListDict dict = PListParser.parse(fileUrl);
+                Foundation.NSDictionary dict = new Foundation.NSDictionary(Foundation.safeInvoke("NSDictionary", "dictionaryWithContentsOfFile:",
+                        new Object[]{Foundation.nsString(fileUrl)}));
+//                Map map = Foundation.NSDictionary.toStringMap(Foundation.safeInvoke("NSDictionary", "dictionaryWithContentsOfFile:",
+//                        new Object[]{Foundation.nsString(fileUrl)}));
 
-                    names.add(dict.getString("MCMMetadataIdentifier"));
-                    projectSandboxPaths.add(fileName);
-                } catch (PListException e) {
-                    e.printStackTrace();
-                }
+                String identifier = Foundation.toStringViaUTF8(dict.get("MCMMetadataIdentifier"));
+
+                names.add(identifier);
+                projectSandboxPaths.add(fileName);
             }
 
         }
@@ -135,6 +136,7 @@ public class ItemsData {
 
     /**
      * applicationData path
+     *
      * @param UDID
      * @return
      */
@@ -152,7 +154,7 @@ public class ItemsData {
 
         String applicationPath = null;
 
-        for (File f: files) {
+        for (File f : files) {
             String devicePlistPath = f.getAbsolutePath() + "/device.plist";
             String fPath = f.getAbsolutePath();
             try {
@@ -183,6 +185,7 @@ public class ItemsData {
 
     /**
      * applicationsDataPath
+     *
      * @param path
      * @return
      */
@@ -192,7 +195,7 @@ public class ItemsData {
     }
 
     static String getAppName(String identifierName) {
-        String [] arr = identifierName.split("\\.");
+        String[] arr = identifierName.split("\\.");
         String projectName = arr[arr.length - 1];
         projectName = projectName.replace("-", "_");
         return projectName;
