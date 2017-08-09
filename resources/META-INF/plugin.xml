@@ -16,13 +16,13 @@
     </change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <!--<idea-version since-build="171"/>-->
+    <idea-version since-build="145.0"/>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
-    <!-- uncomment to enacom.away1994.pluginugin in all products
+    <!--&lt;!&ndash; uncomment to plugin in all products-->
     <depends>com.intellij.modules.lang</depends>
-    -->
+    <!--&ndash;&gt;-->
 
     <!--<extensions defaultExtensionNs="com.intellij">-->
         <!--&lt;!&ndash; Add your extensions here &ndash;&gt;-->
